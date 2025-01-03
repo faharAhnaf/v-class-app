@@ -3,6 +3,8 @@ import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
+import { Separator } from '@/components/ui/separator';
+import GuestLayout from '@/Layouts/GuestLayout';
 import { Head, Link, useForm } from '@inertiajs/react';
 import { FormEventHandler } from 'react';
 
@@ -28,7 +30,7 @@ export default function Login({
     };
 
     return (
-        <>
+        <GuestLayout>
             <Head title="Log in" />
 
             {status && (
@@ -86,7 +88,7 @@ export default function Login({
                     </label>
                 </div>
 
-                <div className="mt-4 flex items-center justify-end">
+                <div className="mt-4 flex items-center justify-between gap-3">
                     {canResetPassword && (
                         <Link
                             href={route('password.request')}
@@ -95,12 +97,18 @@ export default function Login({
                             Forgot your password?
                         </Link>
                     )}
-
-                    <PrimaryButton className="ms-4" disabled={processing}>
+                    <Separator orientation="vertical" className="h-4" />
+                    <Link
+                        href={route('register')}
+                        className="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:text-gray-400 dark:hover:text-gray-100 dark:focus:ring-offset-gray-800"
+                    >
+                        Haven't registered?
+                    </Link>
+                    <PrimaryButton className="" disabled={processing}>
                         Log in
                     </PrimaryButton>
                 </div>
             </form>
-        </>
+        </GuestLayout>
     );
 }

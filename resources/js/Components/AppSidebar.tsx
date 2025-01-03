@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import * as React from 'react';
 
+import { usePage } from '@inertiajs/react';
 import { NavMain } from './NavMain';
 import { NavUser } from './NavUser';
 import {
@@ -129,10 +130,12 @@ const data = {
 };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+    const user = usePage().props.auth.user;
+    console.log(user);
     return (
         <Sidebar collapsible="icon" {...props}>
             <SidebarHeader>
-                <NavUser user={data.user} />
+                <NavUser user={user} />
             </SidebarHeader>
             <SidebarContent>
                 <NavMain items={data.navMain} />

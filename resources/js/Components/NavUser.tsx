@@ -3,7 +3,7 @@
 import { BadgeCheck, Bell, ChevronsUpDown, LogOut } from 'lucide-react';
 
 import { Link } from '@inertiajs/react';
-import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
+import { Avatar, AvatarFallback } from './ui/avatar';
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -26,7 +26,6 @@ export function NavUser({
     user: {
         name: string;
         email: string;
-        avatar: string;
     };
 }) {
     const { isMobile } = useSidebar();
@@ -41,10 +40,10 @@ export function NavUser({
                             className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
                         >
                             <Avatar className="h-8 w-8 rounded-lg">
-                                <AvatarImage
+                                {/* <AvatarImage
                                     src={user.avatar}
                                     alt={user.name}
-                                />
+                                /> */}
                                 <AvatarFallback className="rounded-lg">
                                     CN
                                 </AvatarFallback>
@@ -69,10 +68,10 @@ export function NavUser({
                         <DropdownMenuLabel className="p-0 font-normal">
                             <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                                 <Avatar className="h-8 w-8 rounded-lg">
-                                    <AvatarImage
+                                    {/* <AvatarImage
                                         src={user.avatar}
                                         alt={user.name}
-                                    />
+                                    /> */}
                                     <AvatarFallback className="rounded-lg">
                                         CN
                                     </AvatarFallback>
@@ -89,10 +88,7 @@ export function NavUser({
                         </DropdownMenuLabel>
                         <DropdownMenuSeparator />
                         <DropdownMenuGroup>
-                            <Link
-                                href={route('profile.edit')}
-                                className="cursor-pointer"
-                            >
+                            <Link href={route('profile.edit')}>
                                 <DropdownMenuItem>
                                     <BadgeCheck />
                                     Account
@@ -104,7 +100,11 @@ export function NavUser({
                             </DropdownMenuItem>
                         </DropdownMenuGroup>
                         <DropdownMenuSeparator />
-                        <Link href={route('logout')}>
+                        <Link
+                            href={route('logout')}
+                            method="post"
+                            className="w-full"
+                        >
                             <DropdownMenuItem>
                                 <LogOut />
                                 Log out

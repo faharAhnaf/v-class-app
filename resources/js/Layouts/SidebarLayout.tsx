@@ -28,34 +28,40 @@ export default function SidebarLayout({ header, children }: Props) {
     return (
         <SidebarProvider>
             <AppSidebar />
-            <SidebarInset>
-                <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
+            <SidebarInset className="relative">
+                <header className="fixed flex h-16 w-full shrink-0 items-center gap-2 border-b bg-white px-4">
                     <SidebarTrigger className="-ml-1" />
                     <HeaderText text={header}></HeaderText>
                     <Separator orientation="vertical" className="mr-2 h-4" />
-                    <Breadcrumb>
-                        <BreadcrumbList>
-                            <BreadcrumbItem>
-                                <BreadcrumbLink href="/">
-                                    Dashboard
-                                </BreadcrumbLink>
-                            </BreadcrumbItem>
-                            <BreadcrumbSeparator className="hidden md:block" />
-                            {pathname.map((path, index) => (
-                                <>
-                                    <BreadcrumbItem key={index}>
-                                        <BreadcrumbLink href={`/${path}`}>
-                                            {path.slice(0, 1).toUpperCase() +
-                                                path.slice(1)}
-                                        </BreadcrumbLink>
-                                    </BreadcrumbItem>
-                                    <BreadcrumbSeparator className="hidden md:block" />
-                                </>
-                            ))}
-                        </BreadcrumbList>
-                    </Breadcrumb>
+                    {pathname.length > 0 && (
+                        <Breadcrumb>
+                            <BreadcrumbList>
+                                <BreadcrumbItem>
+                                    <BreadcrumbLink href="/">
+                                        Dashboard
+                                    </BreadcrumbLink>
+                                </BreadcrumbItem>
+                                <BreadcrumbSeparator className="hidden md:block" />
+                                {pathname.map((path, index) => (
+                                    <>
+                                        <BreadcrumbItem key={index}>
+                                            <BreadcrumbLink href={`/${path}`}>
+                                                {path
+                                                    .slice(0, 1)
+                                                    .toUpperCase() +
+                                                    path.slice(1)}
+                                            </BreadcrumbLink>
+                                        </BreadcrumbItem>
+                                        <BreadcrumbSeparator className="hidden md:block" />
+                                    </>
+                                ))}
+                            </BreadcrumbList>
+                        </Breadcrumb>
+                    )}
                 </header>
-                <div className="flex flex-1 flex-col gap-4 p-4">{children}</div>
+                <div className="mt-16 flex flex-1 flex-col gap-4 p-4">
+                    {children}
+                </div>
             </SidebarInset>
         </SidebarProvider>
     );
