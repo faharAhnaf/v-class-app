@@ -10,8 +10,9 @@ interface Props {
 }
 export default function CardCourse({ data }: Props) {
     return (
-        <div className="mt-10">
-            <div className="flex overflow-hidden border border-gray-200 bg-white shadow-xl dark:bg-gray-800 sm:rounded-lg">
+        // <Link href={route('course')}>
+        <div className="mt-10 cursor-pointer">
+            <div className="flex overflow-hidden border border-gray-200 bg-white shadow-xl duration-100 hover:bg-gray-200 dark:bg-gray-800 sm:rounded-lg">
                 <div className="flex w-40 items-center justify-center">
                     <img
                         src="https://dummyimage.com/600x400/000/fff"
@@ -30,5 +31,6 @@ export default function CardCourse({ data }: Props) {
                 </div>
             </div>
         </div>
+        // </Link>
     );
 }
