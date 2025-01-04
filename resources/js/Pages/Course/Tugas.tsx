@@ -3,10 +3,10 @@ import CardMatkul from '@/Components/cards/CardMatkul';
 import SidebarLayout from '@/Layouts/SidebarLayout';
 import { Head } from '@inertiajs/react';
 
-export default function Forum() {
+export default function Tugas() {
     return (
-        <SidebarLayout header="Forum">
-            <Head title="Forum"></Head>
+        <SidebarLayout header="Tugas">
+            <Head title="Tugas"></Head>
             <main className="container">
                 <CardMatkul>Interaksi Manusia & Komputer</CardMatkul>
                 <CardLinkMatkul></CardLinkMatkul>

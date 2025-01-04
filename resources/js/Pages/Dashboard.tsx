@@ -26,17 +26,15 @@ const datas = [
 export default function Dashboard() {
     return (
         <SidebarLayout header="Dashboard">
-            <div className="h-full rounded-lg bg-gray-100 dark:bg-gray-900">
-                <Head title="Dashboard" />
-                <main className="mx-auto my-10 max-w-7xl items-center px-4 sm:px-6 lg:px-8">
-                    <p className="text-3xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
-                        My Course
-                    </p>
-                    {datas.map((data, i) => (
-                        <CardCourse key={i} data={data} />
-                    ))}
-                </main>
-            </div>
+            <Head title="Dashboard" />
+            <main className="container">
+                <p className="text-3xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
+                    My Course
+                </p>
+                {datas.map((data, i) => (
+                    <CardCourse key={i} data={data} />
+                ))}
+            </main>
         </SidebarLayout>
     );
 }

@@ -43,24 +43,22 @@ export default function SidebarLayout({ header, children }: Props) {
                                 </BreadcrumbItem>
                                 <BreadcrumbSeparator className="hidden md:block" />
                                 {pathname.map((path, index) => (
-                                    <>
-                                        <BreadcrumbItem key={index}>
-                                            <BreadcrumbLink href={`/${path}`}>
-                                                {path
-                                                    .slice(0, 1)
-                                                    .toUpperCase() +
-                                                    path.slice(1)}
-                                            </BreadcrumbLink>
-                                        </BreadcrumbItem>
+                                    <BreadcrumbItem key={index}>
+                                        <BreadcrumbLink href={`/${path}`}>
+                                            {path.slice(0, 1).toUpperCase() +
+                                                path.slice(1)}
+                                        </BreadcrumbLink>
                                         <BreadcrumbSeparator className="hidden md:block" />
-                                    </>
+                                    </BreadcrumbItem>
                                 ))}
                             </BreadcrumbList>
                         </Breadcrumb>
                     )}
                 </header>
                 <div className="mt-16 flex flex-1 flex-col gap-4 p-4">
-                    {children}
+                    <div className="h-full rounded-lg bg-gray-100 dark:bg-gray-900">
+                        {children}
+                    </div>
                 </div>
             </SidebarInset>
         </SidebarProvider>

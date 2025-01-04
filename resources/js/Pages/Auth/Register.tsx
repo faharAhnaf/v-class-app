@@ -43,7 +43,6 @@ export default function Register() {
 
                     <InputError message={errors.name} className="mt-2" />
                 </div>
-
                 <div className="mt-4">
                     <InputLabel htmlFor="email" value="Email" />
 
@@ -60,7 +59,6 @@ export default function Register() {
 
                     <InputError message={errors.email} className="mt-2" />
                 </div>
-
                 <div className="mt-4">
                     <InputLabel htmlFor="password" value="Password" />
 
@@ -77,7 +75,6 @@ export default function Register() {
 
                     <InputError message={errors.password} className="mt-2" />
                 </div>
-
                 <div className="mt-4">
                     <InputLabel
                         htmlFor="password_confirmation"
@@ -102,7 +99,6 @@ export default function Register() {
                         className="mt-2"
                     />
                 </div>
-
                 <div className="mt-4 flex items-center justify-end">
                     <Link
                         href={route('login')}
