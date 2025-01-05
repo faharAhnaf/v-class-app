@@ -1,4 +1,5 @@
 import Checkbox from '@/Components/Checkbox';
+import HeaderTwo from '@/Components/headers/HeaderTwo';
 import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
@@ -38,6 +39,7 @@ export default function Login({
                     {status}
                 </div>
             )}
+            <HeaderTwo>Login</HeaderTwo>
 
             <form onSubmit={submit}>
                 <div>

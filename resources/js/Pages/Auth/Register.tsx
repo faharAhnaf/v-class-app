@@ -1,3 +1,4 @@
+import HeaderTwo from '@/Components/headers/HeaderTwo';
 import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
@@ -9,6 +10,8 @@ import { FormEventHandler } from 'react';
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
         name: '',
+        username: '',
+        npm: '',
         email: '',
         password: '',
         password_confirmation: '',
@@ -26,9 +29,11 @@ export default function Register() {
         <GuestLayout>
             <Head title="Register" />
 
+            <HeaderTwo>Register</HeaderTwo>
+
             <form onSubmit={submit}>
                 <div>
-                    <InputLabel htmlFor="name" value="Name" />
+                    <InputLabel htmlFor="name" value="Nama Lengkap" />
 
                     <TextInput
                         id="name"
@@ -44,6 +49,38 @@ export default function Register() {
                     <InputError message={errors.name} className="mt-2" />
                 </div>
                 <div className="mt-4">
+                    <InputLabel htmlFor="username" value="Username" />
+
+                    <TextInput
+                        id="username"
+                        type="text"
+                        name="username"
+                        value={data.username}
+                        className="mt-1 block w-full"
+                        autoComplete="username"
+                        onChange={(e) => setData('username', e.target.value)}
+                        required
+                    />
+
+                    <InputError message={errors.username} className="mt-2" />
+                </div>
+                <div className="mt-4">
+                    <InputLabel htmlFor="npm" value="Npm" />
+
+                    <TextInput
+                        id="npm"
+                        type="text"
+                        name="npm"
+                        value={data.npm}
+                        className="mt-1 block w-full"
+                        autoComplete="npm"
+                        onChange={(e) => setData('npm', e.target.value)}
+                        required
+                    />
+
+                    <InputError message={errors.npm} className="mt-2" />
+                </div>
+                <div className="mt-4">
                     <InputLabel htmlFor="email" value="Email" />
 
                     <TextInput
@@ -52,7 +89,7 @@ export default function Register() {
                         name="email"
                         value={data.email}
                         className="mt-1 block w-full"
-                        autoComplete="username"
+                        autoComplete="email"
                         onChange={(e) => setData('email', e.target.value)}
                         required
                     />

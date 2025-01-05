@@ -28,6 +28,7 @@ export function NavMain({
         isActive?: boolean;
         items?: {
             title: string;
+            role?: string;
             icon?: LucideIcon;
             url: string;
         }[];

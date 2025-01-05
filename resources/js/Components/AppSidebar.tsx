@@ -4,7 +4,9 @@ import {
     CirclePlus,
     CircleUserRound,
     Frame,
+    LayoutDashboard,
     Map,
+    NotepadText,
     PieChart,
     School,
 } from 'lucide-react';
@@ -31,9 +33,21 @@ const data = {
             isActive: true,
             items: [
                 {
+                    title: 'Dashboard',
+                    icon: LayoutDashboard,
+                    url: '/',
+                },
+                {
                     title: 'Gabung Kelas',
                     icon: CirclePlus,
+                    role: 'murid',
                     url: '/gabung-kelas',
+                },
+                {
+                    title: 'Buat Kelas',
+                    icon: CirclePlus,
+                    role: 'guru',
+                    url: '/buat-kelas',
                 },
             ],
         },
@@ -41,7 +55,6 @@ const data = {
             title: 'Mata Kuliah',
             url: '#',
             icon: School,
-            isActive: true,
             items: [
                 {
                     title: 'Forum',
@@ -57,6 +70,12 @@ const data = {
                     title: 'Absensi',
                     icon: CheckCheck,
                     url: '/absen',
+                },
+                {
+                    title: 'Nilai',
+                    icon: NotepadText,
+                    role: 'guru',
+                    url: '/nilai',
                 },
             ],
         },
