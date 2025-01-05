@@ -15,7 +15,7 @@ export default {
         extend: {
             backgroundImage: {
                 'matkul-bg-pattern': "url('/assets/matkul-bg.png')",
-                // 'footer-texture': "url('/img/footer-texture.png')",
+                'auth-bg-pattern': "url('/assets/auth-bg.png')",
             },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],

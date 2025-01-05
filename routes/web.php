@@ -19,6 +19,14 @@ Route::get('/', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/buat-kelas', function () {
+    return Inertia::render('BuatKelas');
+})->middleware(['auth', 'verified'])->name('buat-kelas');
+
+Route::get('/gabung-kelas', function () {
+    return Inertia::render('GabungKelas');
+})->middleware(['auth', 'verified'])->name('gabung-kelas');
+
 Route::get('/forum', function () {
     return Inertia::render('Course/Forum');
 })->middleware(['auth', 'verified'])->name('forum');
@@ -37,10 +45,9 @@ Route::get('/absen', function () {
 
 Route::get('/absen/{pertemuan}', [AbsenController::class, 'show'])->name('absen.show');
 
-
-Route::get('/gabung-kelas', function () {
-    return Inertia::render('GabungKelas');
-})->middleware(['auth', 'verified'])->name('gabung-kelas');
+Route::get('/nilai', function () {
+    return Inertia::render('Course/Nilai');
+})->middleware(['auth', 'verified'])->name('nilai');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
