@@ -12,7 +12,7 @@ class TugasController extends Controller
      */
     public function index()
     {
-        //
+        return Inertia::render('Course/Tugas');
     }
 
     /**

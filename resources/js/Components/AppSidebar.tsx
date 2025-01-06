@@ -34,13 +34,14 @@ const data = {
             items: [
                 {
                     title: 'Dashboard',
+                    role: 'all',
                     icon: LayoutDashboard,
                     url: '/',
                 },
                 {
                     title: 'Gabung Kelas',
                     icon: CirclePlus,
-                    role: 'murid',
+                    role: 'siswa',
                     url: '/gabung-kelas',
                 },
                 {
@@ -59,16 +60,19 @@ const data = {
                 {
                     title: 'Forum',
                     icon: School,
+                    role: 'all',
                     url: '/forum',
                 },
                 {
                     title: 'Tugas',
                     icon: BookOpenCheck,
+                    role: 'all',
                     url: '/tugas',
                 },
                 {
                     title: 'Absensi',
                     icon: CheckCheck,
+                    role: 'siswa',
                     url: '/absen',
                 },
                 {

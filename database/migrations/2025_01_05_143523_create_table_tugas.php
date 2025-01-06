@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('nama_tugas');
             $table->timestamps();
 
-            $table->foreign('matkul_id')->references('id')->on('kode_matkul')->onDelete('cascade');;
-            $table->foreign('siswa_id')->references('id')->on('users')->onDelete('cascade');;
+            $table->foreign('matkul_id')->references('id')->on('kode_matkuls')->onDelete('cascade');
+            $table->foreign('siswa_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

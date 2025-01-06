@@ -24,7 +24,7 @@ export function NavUser({
     user,
 }: {
     user: {
-        name: string;
+        nama_user: string;
         email: string;
     };
 }) {
@@ -50,7 +50,7 @@ export function NavUser({
                             </Avatar>
                             <div className="grid flex-1 text-left text-sm leading-tight">
                                 <span className="truncate font-semibold">
-                                    {user.name}
+                                    {user.nama_user}
                                 </span>
                                 <span className="truncate text-xs">
                                     {user.email}
@@ -78,7 +78,7 @@ export function NavUser({
                                 </Avatar>
                                 <div className="grid flex-1 text-left text-sm leading-tight">
                                     <span className="truncate font-semibold">
-                                        {user.name}
+                                        {user.nama_user}
                                     </span>
                                     <span className="truncate text-xs">
                                         {user.email}

@@ -1,7 +1,9 @@
 export interface User {
     id: number;
-    name: string;
+    nama_user: string;
     email: string;
+    role: string;
+    npm: string;
     email_verified_at?: string;
 }
 

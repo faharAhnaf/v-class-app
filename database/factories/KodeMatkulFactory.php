@@ -2,7 +2,8 @@
 
 namespace Database\Factories;
 
-use Illuminate\Foundation\Auth\User;
+use App\Models\User;
+use App\Models\KodeMatkul;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -10,7 +11,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class KodeMatkulFactory extends Factory
 {
-    protected $model = \App\Models\KodeMatkul::class;
+    protected $model = KodeMatkul::class;
     /**
      * Define the model's default state.
      *

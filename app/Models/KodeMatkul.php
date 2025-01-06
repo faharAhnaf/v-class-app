@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class KodeMatkul extends Model
 {
+    use HasFactory;
+
     protected $fillable = ['kode_matkul', 'nama_matkul', 'dosen_id'];
 
     public function tugas()

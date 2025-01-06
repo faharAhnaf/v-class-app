@@ -8,6 +8,7 @@ import {
     CollapsibleTrigger,
 } from './ui/collapsible';
 
+import { usePage } from '@inertiajs/react';
 import {
     SidebarGroup,
     SidebarMenu,
@@ -34,6 +35,7 @@ export function NavMain({
         }[];
     }[];
 }) {
+    const user = usePage().props.auth.user;
     return (
         <SidebarGroup>
             {/* <SidebarGroupLabel>Platform</SidebarGroupLabel> */}
@@ -55,18 +57,33 @@ export function NavMain({
                             </CollapsibleTrigger>
                             <CollapsibleContent>
                                 <SidebarMenuSub>
-                                    {item.items?.map((subItem) => (
-                                        <SidebarMenuSubItem key={subItem.title}>
-                                            <SidebarMenuSubButton asChild>
-                                                <a href={subItem.url}>
-                                                    {subItem.icon && (
-                                                        <subItem.icon />
-                                                    )}
-                                                    <span>{subItem.title}</span>
-                                                </a>
-                                            </SidebarMenuSubButton>
-                                        </SidebarMenuSubItem>
-                                    ))}
+                                    {item.items?.map((subItem) => {
+                                        // Check if the user's role matches the subItem's role or if the subItem's role is 'all'
+                                        if (
+                                            user.role === subItem.role ||
+                                            subItem.role === 'all'
+                                        ) {
+                                            return (
+                                                <SidebarMenuSubItem
+                                                    key={subItem.title}
+                                                >
+                                                    <SidebarMenuSubButton
+                                                        asChild
+                                                    >
+                                                        <a href={subItem.url}>
+                                                            {subItem.icon && (
+                                                                <subItem.icon />
+                                                            )}
+                                                            <span>
+                                                                {subItem.title}
+                                                            </span>
+                                                        </a>
+                                                    </SidebarMenuSubButton>
+                                                </SidebarMenuSubItem>
+                                            );
+                                        }
+                                        return null;
+                                    })}
                                 </SidebarMenuSub>
                             </CollapsibleContent>
                         </SidebarMenuItem>

@@ -12,7 +12,7 @@ class AbsenController extends Controller
      */
     public function index()
     {
-        //
+        return Inertia::render('Course/Absen');
     }
 
     /**

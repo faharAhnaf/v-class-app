@@ -15,39 +15,34 @@ use Inertia\Inertia;
 //     ]);
 // });
 
-Route::get('/', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/', function () {
+        return Inertia::render('Dashboard');
+    })->name('dashboard');
 
-Route::get('/buat-kelas', function () {
-    return Inertia::render('BuatKelas');
-})->middleware(['auth', 'verified'])->name('buat-kelas');
+    Route::get('/buat-kelas', function () {
+        return Inertia::render('BuatKelas');
+    })->name('buat-kelas');
 
-Route::get('/gabung-kelas', function () {
-    return Inertia::render('GabungKelas');
-})->middleware(['auth', 'verified'])->name('gabung-kelas');
+    Route::get('/gabung-kelas', function () {
+        return Inertia::render('GabungKelas');
+    })->name('gabung-kelas');
 
-Route::get('/forum', function () {
-    return Inertia::render('Course/Forum');
-})->middleware(['auth', 'verified'])->name('forum');
+    Route::get('/forum', [ForumController::class, 'index'])->name('forum.index');
+    Route::get('/forum/{pertemuan}', [ForumController::class, 'show'])->name('forum.show');
 
-Route::get('/forum/{pertemuan}', [ForumController::class, 'show'])->name('forum.show');
+    Route::get('/tugas', [TugasController::class, 'index'])->name('tugas');
+    Route::get('/tugas/{pertemuan}', [TugasController::class, 'show'])->name('tugas.show');
 
-Route::get('/tugas', function () {
-    return Inertia::render('Course/Tugas');
-})->middleware(['auth', 'verified'])->name('tugas');
+    Route::get('/absen', [AbsenController::class, 'index'])->name('absen');
+    Route::get('/absen/{pertemuan}', [AbsenController::class, 'show'])->name('absen.show');
 
-Route::get('/tugas/{pertemuan}', [TugasController::class, 'show'])->name('tugas.show');
+    Route::get('/nilai', function () {
+        return Inertia::render('Course/Nilai');
+    })->name('nilai');
+});
 
-Route::get('/absen', function () {
-    return Inertia::render('Course/Absen');
-})->middleware(['auth', 'verified'])->name('absen');
 
-Route::get('/absen/{pertemuan}', [AbsenController::class, 'show'])->name('absen.show');
-
-Route::get('/nilai', function () {
-    return Inertia::render('Course/Nilai');
-})->middleware(['auth', 'verified'])->name('nilai');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

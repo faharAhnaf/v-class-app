@@ -9,7 +9,7 @@ import { FormEventHandler } from 'react';
 
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
-        name: '',
+        nama_user: '',
         username: '',
         npm: '',
         email: '',
@@ -20,8 +20,13 @@ export default function Register() {
     const submit: FormEventHandler = (e) => {
         e.preventDefault();
 
+        console.log(data);
+
         post(route('register'), {
             onFinish: () => reset('password', 'password_confirmation'),
+            onError: (errors) => {
+                console.error(errors); // Log the errors to the console
+            },
         });
     };
 
@@ -33,20 +38,20 @@ export default function Register() {
 
             <form onSubmit={submit}>
                 <div>
-                    <InputLabel htmlFor="name" value="Nama Lengkap" />
+                    <InputLabel htmlFor="nama_user" value="Nama Lengkap" />
 
                     <TextInput
-                        id="name"
-                        name="name"
-                        value={data.name}
+                        id="nama_user"
+                        name="nama_user"
+                        value={data.nama_user}
                         className="mt-1 block w-full"
                         autoComplete="name"
                         isFocused={true}
-                        onChange={(e) => setData('name', e.target.value)}
+                        onChange={(e) => setData('nama_user', e.target.value)}
                         required
                     />
 
-                    <InputError message={errors.name} className="mt-2" />
+                    <InputError message={errors.nama_user} className="mt-2" />
                 </div>
                 <div className="mt-4">
                     <InputLabel htmlFor="username" value="Username" />
