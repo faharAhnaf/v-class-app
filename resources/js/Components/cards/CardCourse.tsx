@@ -11,7 +11,7 @@ interface Props {
 }
 export default function CardCourse({ data }: Props) {
     return (
-        // <Link href={route('course')}>
+        // <Link href={route('matkul')}>
         <div className="mt-10 cursor-pointer">
             <div className="flex overflow-hidden border border-gray-200 bg-white shadow-xl duration-100 hover:bg-gray-200 dark:bg-gray-800 sm:rounded-lg">
                 <div className="flex w-40 items-center justify-center">

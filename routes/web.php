@@ -34,9 +34,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/tugas', [TugasController::class, 'index'])->name('tugas');
     Route::get('/tugas/{pertemuan}', [TugasController::class, 'show'])->name('tugas.show');
 
-    Route::get('/absen', [AbsenController::class, 'index'])->name('absen');
-    Route::get('/absen/{pertemuan}', [AbsenController::class, 'show'])->name('absen.show');
-
     Route::get('/nilai', function () {
         return Inertia::render('Course/Nilai');
     })->name('nilai');

@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tugas', function (Blueprint $table) {
-            $table->id('id');
-            $table->unsignedBigInteger('matkul_id');
+        Schema::create('forums', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger('siswa_id');
-            $table->string('nama_tugas');
+            $table->string('pesan');
             $table->timestamps();
 
-            $table->foreign('matkul_id')->references('id')->on('kode_matkuls')->onDelete('cascade');
             $table->foreign('siswa_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
@@ -28,6 +26,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tugas');
+        Schema::table('matkuls', function (Blueprint $table) {
+            $table->dropForeign(['forum_id']);
+        });
+
+        Schema::dropIfExists('forums');
     }
 };

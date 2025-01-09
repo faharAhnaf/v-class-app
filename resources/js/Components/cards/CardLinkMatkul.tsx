@@ -1,15 +1,20 @@
+import ErrorMessage from '../ErrorMessage';
 import ListPertemuan from '../ListPertemuan';
+import Card from './Card';
 
 export default function CardLinkMatkul() {
+    const data = Array.from({ length: 5 });
     return (
-        <div className="h-full w-full rounded-lg">
-            <div className="grid h-full w-full items-center space-y-5">
-                <div className="grid space-y-5">
-                    {Array.from({ length: 5 }).map((_, index) => (
+        <Card>
+            <div className="grid space-y-5">
+                {data.length > 0 ? (
+                    data.map((_, index) => (
                         <ListPertemuan index={index} key={index} />
-                    ))}
-                </div>
+                    ))
+                ) : (
+                    <ErrorMessage message="Tidak ada pertemuan" />
+                )}
             </div>
-        </div>
+        </Card>
     );
 }

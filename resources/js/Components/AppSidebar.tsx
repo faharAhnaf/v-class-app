@@ -1,6 +1,5 @@
 import {
     BookOpenCheck,
-    CheckCheck,
     CirclePlus,
     CircleUserRound,
     Frame,
@@ -68,12 +67,6 @@ const data = {
                     icon: BookOpenCheck,
                     role: 'all',
                     url: '/tugas',
-                },
-                {
-                    title: 'Absensi',
-                    icon: CheckCheck,
-                    role: 'siswa',
-                    url: '/absen',
                 },
                 {
                     title: 'Nilai',

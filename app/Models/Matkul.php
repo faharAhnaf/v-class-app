@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class KodeMatkul extends Model
+class Matkul extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['kode_matkul', 'nama_matkul', 'dosen_id'];
+    protected $fillable = ['nama_matkul', 'dosen_id'];
 
     public function tugas()
     {

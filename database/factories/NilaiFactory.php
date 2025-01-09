@@ -2,14 +2,14 @@
 
 namespace Database\Factories;
 
-use App\Models\Matkul;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\User;
+use App\Models\Matkul;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Tugas>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Nilai>
  */
-class TugasFactory extends Factory
+class NilaiFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -20,7 +20,9 @@ class TugasFactory extends Factory
     {
         return [
             'siswa_id' => User::where('role', 'siswa')->inRandomOrder()->first()->id, // Ambil siswa_id secara acak
-            'nama_tugas' => 'Tugas ' . $this->faker->lexify('?????'), // Nama tugas acak
+            'matkul_id' => Matkul::inRandomOrder()->first()->id, // Ambil matkul_id secara acak
+            'nilai' => $this->faker->numberBetween(60, 100), // Nilai acak antara 60-100
+            'status' => $this->faker->randomElement(['Hadir', 'Tidak Hadir']), // Status acak
             'created_at' => now(),
             'updated_at' => now(),
         ];

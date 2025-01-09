@@ -11,15 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kode_matkuls', function (Blueprint $table) {
+        Schema::create('matkuls', function (Blueprint $table) {
             $table->id('id');
             $table->unsignedBigInteger('dosen_id');
-            $table->string('kode_matkul');
+            $table->unsignedBigInteger('forum_id');
+            $table->unsignedBigInteger('tugas_id');
             $table->string('nama_matkul');
             $table->string('kelas');
             $table->timestamps();
 
             $table->foreign('dosen_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('forum_id')->references('id')->on(table: 'forums')->onDelete('cascade');
+            $table->foreign('tugas_id')->references('id')->on(table: 'tugas')->onDelete('cascade');
         });
     }
 
@@ -28,6 +31,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kode_matkuls');
+
+        Schema::dropIfExists('matkuls');
     }
 };

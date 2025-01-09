@@ -56,6 +56,6 @@ class User extends Authenticatable
 
     public function matkulDosen()
     {
-        return $this->hasMany(KodeMatkul::class, 'dosen_id');
+        return $this->hasMany(Matkul::class, 'dosen_id');
     }
 }
