@@ -5,9 +5,6 @@ namespace Database\Factories;
 use App\Models\User;
 use App\Models\Matkul;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Forum;
-use App\Models\Tugas;
-
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Matkul>
@@ -15,6 +12,7 @@ use App\Models\Tugas;
 class MatkulFactory extends Factory
 {
     protected $model = Matkul::class;
+
     /**
      * Define the model's default state.
      *
@@ -22,19 +20,13 @@ class MatkulFactory extends Factory
      */
     public function definition(): array
     {
-        // Ambil satu dosen secara acak
-        $dosenId = User::where('role', 'dosen')->inRandomOrder()->first()->id;
-
-        // Ambil satu forum dan tugas secara acak
-        $forumId = Forum::inRandomOrder()->first()->id;
-        $tugasId = Tugas::inRandomOrder()->first()->id;
+        $dosenId = User::where('role', 'guru')->inRandomOrder()->first()->id;
 
         return [
             'dosen_id' => $dosenId,
-            'forum_id' => $forumId,
-            'tugas_id' => $tugasId,
-            'nama_matkul' => 'Matkul ' . $this->faker->word, // Nama matkul acak
-            'kelas' => 'Kelas ' . rand(1, 10), // Kelas acak antara 1 sampai 10
+            'nama_matkul' =>  $this->faker->word,
+            'kelas' => 'Kelas ' . rand(1, 10),
+            'kode_matkul' => 'MK' . rand(1000, 9999),
             'created_at' => now(),
             'updated_at' => now(),
         ];

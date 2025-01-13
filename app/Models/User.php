@@ -21,6 +21,7 @@ class User extends Authenticatable
         'npm',
         'nama_user',
         'username',
+        'image',
         'role',
         'email',
         'password',
@@ -49,13 +50,8 @@ class User extends Authenticatable
         ];
     }
 
-    public function tugas()
+    public function enrollMatkul()
     {
-        return $this->hasMany(Tugas::class, 'siswa_id');
-    }
-
-    public function matkulDosen()
-    {
-        return $this->hasMany(Matkul::class, 'dosen_id');
+        return $this->hasMany(Tugas::class, 'user_id');
     }
 }

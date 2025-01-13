@@ -1,6 +1,9 @@
+import { Matkul } from '@/model/Matkul';
+
 export interface User {
     id: number;
     nama_user: string;
+    image: string;
     email: string;
     role: string;
     npm: string;
@@ -13,4 +16,5 @@ export type PageProps<
     auth: {
         user: User;
     };
+    matkul: Matkul[];
 };

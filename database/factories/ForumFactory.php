@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Matkul;
+use App\Models\Pertemuan;
 use App\Models\User;
 
 /**
@@ -17,11 +19,14 @@ class ForumFactory extends Factory
      */
     public function definition(): array
     {
-        $siswaId = User::where('role', 'siswa')->inRandomOrder()->first()->id;
-
+        $userId = User::where('role', 'siswa')->inRandomOrder()->first()->id;
+        $matkulId = Matkul::inRandomOrder()->first()->id;
+        $pertemuanId = Pertemuan::inRandomOrder()->first()->id;
         return [
-            'siswa_id' => $siswaId, // ID siswa acak
-            'pesan' => $this->faker->sentence, // Pesan acak
+            'user_id' => $userId,
+            'matkul_id' => $matkulId,
+            'pertemuan_id' => $pertemuanId,
+            'pesan' => $this->faker->sentence,
             'created_at' => now(),
             'updated_at' => now(),
         ];

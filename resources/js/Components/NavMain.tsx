@@ -23,6 +23,7 @@ export function NavMain({
     items,
 }: {
     items: {
+        id: number;
         title: string;
         url: string;
         icon?: LucideIcon;
@@ -38,11 +39,10 @@ export function NavMain({
     const user = usePage().props.auth.user;
     return (
         <SidebarGroup>
-            {/* <SidebarGroupLabel>Platform</SidebarGroupLabel> */}
             <SidebarMenu>
                 {items.map((item) => (
                     <Collapsible
-                        key={item.title}
+                        key={item.id}
                         asChild
                         defaultOpen={item.isActive}
                         className="group/collapsible"
@@ -58,7 +58,6 @@ export function NavMain({
                             <CollapsibleContent>
                                 <SidebarMenuSub>
                                     {item.items?.map((subItem) => {
-                                        // Check if the user's role matches the subItem's role or if the subItem's role is 'all'
                                         if (
                                             user.role === subItem.role ||
                                             subItem.role === 'all'

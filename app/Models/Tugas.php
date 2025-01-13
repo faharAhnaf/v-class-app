@@ -8,15 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Tugas extends Model
 {
     use HasFactory;
-    protected $fillable = ['nama_tugas', 'matkul_id', 'siswa_id'];
+    protected $fillable = ['user_id', 'tugas', 'matkul_id', 'pertemuan_id', 'deadline', 'nilai', 'status'];
 
-    public function siswa()
+    public function user()
     {
-        return $this->belongsTo(User::class, 'siswa_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function dosen()
+    public function matkul()
     {
         return $this->belongsTo(Matkul::class, 'matkul_id');
+    }
+
+    public function pertemuan()
+    {
+        return $this->belongsTo(Pertemuan::class, 'pertemuan_id');
     }
 }

@@ -13,11 +13,15 @@ return new class extends Migration
     {
         Schema::create('forums', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('siswa_id');
-            $table->string('pesan');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('matkul_id');
+            $table->unsignedBigInteger('pertemuan_id');
+            $table->longText('pesan');
             $table->timestamps();
 
-            $table->foreign('siswa_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('matkul_id')->references('id')->on('matkuls')->onDelete('cascade');
+            $table->foreign('pertemuan_id')->references('id')->on('pertemuans')->onDelete('cascade');
         });
     }
 
@@ -26,9 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('matkuls', function (Blueprint $table) {
-            $table->dropForeign(['forum_id']);
-        });
 
         Schema::dropIfExists('forums');
     }

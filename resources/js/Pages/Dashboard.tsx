@@ -1,37 +1,23 @@
 import CardCourse from '@/Components/cards/CardCourse';
+import CardHeader from '@/Components/cards/CardHeader';
+import { saveMatkul } from '@/indexedDB';
 import SidebarLayout from '@/Layouts/SidebarLayout';
+import { Matkul } from '@/model/Matkul';
 import { Head } from '@inertiajs/react';
 
-const datas = [
-    {
-        id: 1,
-        course: 'Interaksi Manusia & Komputer',
-        class: '3KA05',
-        teacher_name: 'Taufik Hidayat',
-    },
-    {
-        id: 2,
-        course: 'Konsep Data Mining',
-        class: '3KA05',
-        teacher_name: 'Ihsan Jatnika',
-    },
-    {
-        id: 3,
-        course: 'Pemrograman Berbasis Web',
-        class: '3KA05',
-        teacher_name: 'Sri Wulan W Ratih',
-    },
-];
+export default function Dashboard({ matkul }: { matkul: Matkul[] }) {
+    matkul.forEach((data) => {
+        saveMatkul(data).catch((error) =>
+            console.error('Error saving matkul:', error),
+        );
+    });
 
-export default function Dashboard() {
     return (
-        <SidebarLayout header="Dashboard">
+        <SidebarLayout title="Dashboard">
             <Head title="Dashboard" />
             <main className="container">
-                <p className="text-3xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
-                    My Course
-                </p>
-                {datas.map((data, i) => (
+                <CardHeader>Kelas Saya</CardHeader>
+                {matkul.map((data, i) => (
                     <CardCourse key={i} data={data} />
                 ))}
             </main>

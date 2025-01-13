@@ -9,15 +9,10 @@ class Matkul extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nama_matkul', 'dosen_id'];
+    protected $fillable = ['nama_matkul', 'dosen_id', 'kelas', 'kode_matkul'];
 
-    public function tugas()
+    public function dosen()
     {
-        return $this->hasMany(Tugas::class, 'matkul_id');
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'dosen_id');
     }
 }

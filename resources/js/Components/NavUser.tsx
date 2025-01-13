@@ -2,8 +2,9 @@
 
 import { BadgeCheck, Bell, ChevronsUpDown, LogOut } from 'lucide-react';
 
+import { clearMatkul } from '@/indexedDB';
 import { Link } from '@inertiajs/react';
-import { Avatar, AvatarFallback } from './ui/avatar';
+import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -25,6 +26,7 @@ export function NavUser({
 }: {
     user: {
         nama_user: string;
+        image: string;
         email: string;
     };
 }) {
@@ -40,10 +42,10 @@ export function NavUser({
                             className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
                         >
                             <Avatar className="h-8 w-8 rounded-lg">
-                                {/* <AvatarImage
-                                    src={user.avatar}
-                                    alt={user.name}
-                                /> */}
+                                <AvatarImage
+                                    src={`${user.image || '/images/default-image.jpg'}`}
+                                    alt={user.nama_user}
+                                />
                                 <AvatarFallback className="rounded-lg">
                                     CN
                                 </AvatarFallback>
@@ -68,10 +70,10 @@ export function NavUser({
                         <DropdownMenuLabel className="p-0 font-normal">
                             <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                                 <Avatar className="h-8 w-8 rounded-lg">
-                                    {/* <AvatarImage
-                                        src={user.avatar}
-                                        alt={user.name}
-                                    /> */}
+                                    <AvatarImage
+                                        src={`${user.image || '/images/default-image.jpg'}`}
+                                        alt={user.nama_user}
+                                    />
                                     <AvatarFallback className="rounded-lg">
                                         CN
                                     </AvatarFallback>
@@ -105,7 +107,22 @@ export function NavUser({
                             method="post"
                             className="w-full"
                         >
-                            <DropdownMenuItem>
+                            <DropdownMenuItem
+                                onClick={() => {
+                                    clearMatkul()
+                                        .then(() => {
+                                            console.log(
+                                                'Data berhasil dihapus dari IndexedDB',
+                                            );
+                                        })
+                                        .catch((error) => {
+                                            console.error(
+                                                'Error clearing IndexedDB:',
+                                                error,
+                                            );
+                                        });
+                                }}
+                            >
                                 <LogOut />
                                 Log out
                             </DropdownMenuItem>

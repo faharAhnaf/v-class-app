@@ -1,22 +1,24 @@
 import { Link as LinkIcon } from 'lucide-react';
 
-// import { useKategori } from '@/stores/kategori-store';
+import { PertemuanModel } from '@/model/Pertemuan';
 import { Link } from '@inertiajs/react';
 
-export default function ListPertemuan({ index }: { index: number }) {
-    const kategori = window.location.pathname.split('/')[1];
-
+export default function ListPertemuan({ data }: { data: PertemuanModel }) {
+    const kategori = window.location.pathname.split('/')[3];
     return (
-        <div className="w-1/2 rounded-lg bg-gray-200 hover:bg-gray-300">
-            <Link
-                href={route(`${kategori}.show`, {
-                    pertemuan: index + 1,
-                })}
-                className="flex h-full w-full cursor-pointer gap-5 p-4"
-            >
+        <Link
+            className="rounded-lg bg-gray-200 hover:bg-gray-300"
+            href={route(`${kategori}.index`, {
+                pertemuanId: data.id,
+                matkulId: data.matkul_id,
+            })}
+        >
+            <div className="flex h-full w-full cursor-pointer gap-5 p-4">
                 <LinkIcon></LinkIcon>
-                <p className="text-lg font-semibold">Pertemuan {index + 1}</p>
-            </Link>
-        </div>
+                <p className="text-lg font-semibold">
+                    {'Pertemuan ' + data.pertemuan + ' - ' + data.topik}
+                </p>
+            </div>
+        </Link>
     );
 }

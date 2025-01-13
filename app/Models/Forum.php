@@ -10,10 +10,20 @@ class Forum extends Model
     /** @use HasFactory<\Database\Factories\ForumFactory> */
     use HasFactory;
 
-    protected $fillable = ['siswa_id', 'pesan'];
+    protected $fillable = ['user_id', 'pesan', 'matkul_id', 'pertemuan_id'];
 
-    public function siswa()
+    public function matkul()
     {
-        return $this->belongsTo(User::class, 'siswa_id', 'id');
+        return $this->belongsTo(Matkul::class, 'matkul_id', 'id');
+    }
+
+    public function pertemuan()
+    {
+        return $this->belongsTo(Pertemuan::class, 'pertemuan_id', 'id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }

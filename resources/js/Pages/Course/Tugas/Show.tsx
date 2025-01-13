@@ -1,13 +1,13 @@
-import CardMatkul from '@/Components/cards/CardMatkul';
+import HeaderOne from '@/Components/headers/HeaderOne';
 import SidebarLayout from '@/Layouts/SidebarLayout';
 import { Head } from '@inertiajs/react';
 
-export default function Show({ pertemuan }: { pertemuan: number }) {
+export default function Show({ pertemuan }: { pertemuan: string }) {
     return (
-        <SidebarLayout header="Tugas">
+        <SidebarLayout title="Tugas">
             <Head title="Tugas"></Head>
             <main className="container">
-                <CardMatkul>{`Pertemuan ${pertemuan}`}</CardMatkul>
+                <HeaderOne>{`Pertemuan ${pertemuan}`}</HeaderOne>
             </main>
         </SidebarLayout>
     );

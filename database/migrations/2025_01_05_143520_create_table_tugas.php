@@ -13,11 +13,17 @@ return new class extends Migration
     {
         Schema::create('tugas', function (Blueprint $table) {
             $table->id('id');
-            $table->unsignedBigInteger('siswa_id');
-            $table->string('nama_tugas');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('matkul_id');
+            $table->unsignedBigInteger('pertemuan_id');
+            $table->longText('tugas');
+            $table->integer('nilai')->nullable();
+            $table->boolean('status');
+            $table->dateTime('deadline')->nullable();
             $table->timestamps();
-
-            $table->foreign('siswa_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('matkul_id')->references('id')->on('matkuls')->onDelete('cascade');
+            $table->foreign('pertemuan_id')->references('id')->on('pertemuans')->onDelete('cascade');
         });
     }
 
@@ -26,9 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('matkuls', function (Blueprint $table) {
-            $table->dropForeign(['tugas_id']);
-        });
 
         Schema::dropIfExists('tugas');
     }

@@ -22,16 +22,12 @@ class DatabaseSeeder extends Seeder
             'email' => 'taufik@gmail.com',
         ]);
 
-        // User::factory()->create([
-        //     'nama_user' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-
         $this->call([
-            ForumSeeder::class,
-            TugasSeeder::class,
             MatkulSeeder::class,
-            NilaiSeeder::class,
+            PertemuanSeeder::class,
+            TugasSeeder::class,
+            ForumSeeder::class,
+            EnrollMatkulSeeder::class
         ]);
     }
 }

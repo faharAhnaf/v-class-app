@@ -28,8 +28,9 @@ class UserFactory extends Factory
             'npm' => fake()->unique()->randomNumber(8),
             'username' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
+            'image' => $this->faker->imageUrl(640, 480, 'people', true, 'Faker'),
             'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'), // password
+            'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
             'role' => 'siswa',
         ];

@@ -6,7 +6,7 @@ export default function Card({
     className?: string;
 }) {
     return (
-        <div className="bg-white p-4 shadow dark:bg-gray-800 sm:rounded-lg sm:p-8">
+        <div className="bg-white p-5 shadow dark:bg-gray-800 sm:rounded-lg">
             <section className={className}>{children}</section>
         </div>
     );
