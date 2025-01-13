@@ -15,7 +15,9 @@ export default function CardCourse({ data }: Props) {
                 <div className="flex overflow-hidden border border-gray-200 bg-white shadow-xl duration-100 hover:bg-gray-200 dark:bg-gray-800 sm:rounded-lg">
                     <div className="flex w-40 items-center justify-center">
                         <img
-                            src={data.dosen.image}
+                            src={
+                                data.dosen.image ?? '/images/default-image.jpg'
+                            }
                             className="size-24 rounded-full"
                         />
                     </div>

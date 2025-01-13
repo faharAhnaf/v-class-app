@@ -45,7 +45,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             {
                 id: 0,
                 title: 'Beranda',
-                url: '#',
+                url: route('matkul.index'),
                 icon: CircleUserRound,
                 isActive: true,
                 items: [
@@ -53,7 +53,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                         title: 'Dashboard',
                         role: 'all',
                         icon: LayoutDashboard,
-                        url: '/',
+                        url: route('matkul.index'),
                     },
                     {
                         title: 'Gabung Kelas',
@@ -65,14 +65,14 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                         title: 'Buat Kelas',
                         icon: CirclePlus,
                         role: 'guru',
-                        url: '/buat-kelas',
+                        url: route('buat-kelas'),
                     },
                 ],
             },
             ...matkul.map((item) => ({
                 id: item.id,
-                title: item.nama_matkul,
-                url: '#',
+                title: `${item.kelas} - ${item.nama_matkul}`,
+                url: route('pertemuan.index', { matkulId: item.id }),
                 icon: School,
                 items: [
                     {
