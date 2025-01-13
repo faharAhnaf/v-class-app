@@ -65,14 +65,18 @@ export function TableNilai({ tugas }: { tugas: TugasModel[] }) {
     const columns: ColumnDef<TugasModel>[] = [
         {
             accessorKey: 'user',
-            header: 'Nama User',
+            header: 'Nama Murid',
             cell: ({ row }) => {
                 const user = row.getValue('user') as User;
-                return (
-                    <div className="text-sm">
-                        {user?.nama_user || 'Unknown'}
-                    </div>
-                );
+                return <div className="text-sm">{user?.nama_user || '-'}</div>;
+            },
+        },
+        {
+            accessorKey: 'user',
+            header: 'NPM',
+            cell: ({ row }) => {
+                const user = row.getValue('user') as User;
+                return <div className="text-sm">{user?.npm || '-'}</div>;
             },
         },
         {
@@ -226,7 +230,7 @@ export function TableNilai({ tugas }: { tugas: TugasModel[] }) {
                                 }
                                 className="mt-2 w-full"
                             />
-                            <div className="mt-4 flex justify-end">
+                            <div className="mt-4 flex justify-between">
                                 <Button
                                     variant="outline"
                                     onClick={() => setIsDialogOpen(false)}

@@ -1,14 +1,11 @@
 <?php
 
-use App\Http\Controllers\AbsenController;
-use App\Http\Controllers\EnrollMatkulController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ForumController;
 use App\Http\Controllers\MatkulController;
 use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\PertemuanController;
 use App\Http\Controllers\TugasController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
