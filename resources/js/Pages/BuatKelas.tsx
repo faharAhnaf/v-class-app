@@ -1,5 +1,5 @@
 import Card from '@/Components/cards/Card';
-import HeaderOne from '@/Components/headers/HeaderOne';
+import CardHeader from '@/Components/cards/CardHeader';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/Components/ui/label';
@@ -23,7 +23,7 @@ export default function BuatKelas() {
             <Head title="Buat Kelas"></Head>
 
             <main className="container">
-                <HeaderOne>Kelas Saya</HeaderOne>
+                <CardHeader>Buat Kelas</CardHeader>
                 <Card>
                     <form onSubmit={submit} className="space-y-4">
                         <div className="grid w-full max-w-sm items-center gap-1.5">
