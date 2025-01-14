@@ -32,9 +32,14 @@ export default function Pertemuan({
                     )}
                 </CardLinkMatkul>
                 {user.role === 'guru' && (
-                    <Link href={route('pertemuan.create', matkul.id)}>
-                        <Button>buat pertemuan</Button>
-                    </Link>
+                    <div className="mt-4">
+                        <Link
+                            href={route('pertemuan.index', matkul.id)}
+                            className="mt-4"
+                        >
+                            <Button>buat pertemuan</Button>
+                        </Link>
+                    </div>
                 )}
             </main>
         </SidebarLayout>

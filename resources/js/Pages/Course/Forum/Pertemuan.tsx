@@ -6,8 +6,7 @@ import { Button } from '@/components/ui/button';
 import SidebarLayout from '@/Layouts/SidebarLayout';
 import { Matkul } from '@/model/Matkul';
 import { PertemuanModel } from '@/model/Pertemuan';
-import { Inertia } from '@inertiajs/inertia';
-import { Head, usePage } from '@inertiajs/react';
+import { Head, Link, usePage } from '@inertiajs/react';
 
 export default function Pertemuan({
     pertemuan,
@@ -33,20 +32,11 @@ export default function Pertemuan({
                     )}
                 </CardLinkMatkul>
                 {user.role === 'guru' && (
-                    <Button
-                        onClick={() => {
-                            Inertia.visit(
-                                route('pertemuan.index', {
-                                    matkulId: matkul.id,
-                                }),
-                                {
-                                    replace: true,
-                                },
-                            );
-                        }}
-                    >
-                        buat pertemuan
-                    </Button>
+                    <div className="mt-4">
+                        <Link href={route('pertemuan.index', [matkul.id])}>
+                            <Button>buat pertemuan</Button>
+                        </Link>
+                    </div>
                 )}
             </main>
         </SidebarLayout>
